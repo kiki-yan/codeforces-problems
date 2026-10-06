@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codeforces Problems — 题库与刷题进度</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">📊</span>
+      <div>
+        <h1>Codeforces Problems</h1>
+        <p class="subtitle">题目浏览 · 难度标签 · 个人刷题进度</p>
+      </div>
+    </div>
+    <div class="handle-box">
+      <input id="handle-input" type="text" placeholder="输入 Codeforces 用户名，如 tourist" autocomplete="off" />
+      <button id="load-user-btn" class="btn btn-primary">加载进度</button>
+      <button id="reset-btn" class="btn btn-ghost" title="清除已加载的用户数据">重置</button>
+    </div>
+  </header>
+
+  <section class="stats-bar" id="stats-bar" hidden>
+    <div class="stat"><span class="stat-num" id="stat-total">0</span><span class="stat-label">总题数</span></div>
+    <div class="stat stat-ac"><span class="stat-num" id="stat-ac">0</span><span class="stat-label">已 AC</span></div>
+    <div class="stat stat-tried"><span class="stat-num" id="stat-tried">0</span><span class="stat-label">尝试过</span></div>
+    <div class="stat stat-rate"><span class="stat-num" id="stat-rate">0%</span><span class="stat-label">完成率</span></div>
+  </section>
+
+  <section class="toolbar">
+    <input id="search-input" type="text" placeholder="🔍 搜索题目名称 / 题号..." autocomplete="off" />
+    <select id="min-rating">
+      <option value="0">最低难度: 不限</option>
+    </select>
+    <select id="max-rating">
+      <option value="5000">最高难度: 不限</option>
+    </select>
+    <select id="sort-by">
+      <option value="rating-asc">难度: 低 → 高</option>
+      <option value="rating-desc">难度: 高 → 低</option>
+      <option value="contest-desc">比赛: 新 → 旧</option>
+      <option value="contest-asc">比赛: 旧 → 新</option>
+      <option value="name">题目名称</option>
+    </select>
+    <select id="status-filter">
+      <option value="all">全部题目</option>
+      <option value="unsolved">未做</option>
+      <option value="tried">尝试过</option>
+      <option value="ac">已 AC</option>
+    </select>
+  </section>
+
+  <section class="tags-bar" id="tags-bar">
+    <span class="tags-label">标签筛选：</span>
+    <span id="tags-list" class="tags-list"><span class="muted">加载中…</span></span>
+  </section>
+
+  <section class="status-bar" id="status-bar">正在从 Codeforces API 拉取题目数据…</section>
+
+  <main class="table-wrap">
+    <table id="problems-table">
+      <thead>
+        <tr>
+          <th class="col-status"></th>
+          <th class="col-id">题号</th>
+          <th class="col-name">题目名称</th>
+          <th class="col-rating">难度</th>
+          <th class="col-tags">标签</th>
+          <th class="col-contest">比赛</th>
+        </tr>
+      </thead>
+      <tbody id="problems-body">
+        <tr><td colspan="6" class="muted center">加载中…</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="footer">
+    数据来自 <a href="https://codeforces.com/apiHelp" target="_blank" rel="noopener">Codeforces Public API</a> ·
+    本站仅作学习用途 · 灵感来自 <a href="https://kenkoooo.com/atcoder/" target="_blank" rel="noopener">AtCoder Problems</a>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
